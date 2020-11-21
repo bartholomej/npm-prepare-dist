@@ -9,10 +9,11 @@ let stop = false;
 const args = minimist(process.argv.slice(2), {
   string: ['dist', 'files', 'main'],
   alias: { h: 'help', v: 'version', d: 'dist', f: 'files', m: 'main' },
-  unknown: (err) => {
+  unknown: (err: string) => {
     console.log('Those arguments are not supported:', err);
     console.log('Use: `npm-prepare-dist --help` for more options.');
     stop = true;
+    return false;
   }
 });
 
