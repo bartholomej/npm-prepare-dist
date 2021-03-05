@@ -11,7 +11,7 @@
     "start": "tsc -w",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "postbuild": "node .",
+    "postbuild": "node . -s postinstall",
     "tsc": "tsc",
     "demo": "ts-node demo",
     "lint": "eslint ./src/**/**/* --fix",
