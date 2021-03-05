@@ -28,8 +28,15 @@ export const copyFiles = (distFolder: string, files: string[]): void => {
  * Clean package.json
  * @param {string} distFolder Build folder
  * @param {string} main Main file folder
+ * @param {boolean} removeDeps Remove all dependencies
+ * @param {string[]} removeScripts Remove some scripts
  */
-export const cleanPackageJson = (distFolder: string, main: string): void => {
+export const cleanPackageJson = (
+  distFolder: string,
+  main: string,
+  removeDeps: boolean,
+  removeScripts: string[]
+): void => {
   // Modify package.json and copy into dist folder
   const pkg: Record<string, any> = originalPackage;
 
@@ -45,6 +52,26 @@ export const cleanPackageJson = (distFolder: string, main: string): void => {
   // Remove husky if exist
   delete pkg.husky;
 
+  // Remove all dependencies
+  if (removeDeps) {
+    delete pkg.dependencies;
+    console.log('\x1b[32m', `All dependencies deleted...`, '\x1b[0m');
+  }
+
+  // Remove scripts from package.json
+  if (removeScripts.length) {
+    console.log('\x1b[32m', `Trying to delete scripts from package.json...`, '\x1b[0m');
+    for (const script of removeScripts) {
+      const value = pkg.scripts[script];
+      if (value) {
+        delete pkg.scripts[script];
+        console.log(`✓ "${script}": "${value}"`, '\x1b[32m', 'Deleted', '\x1b[0m');
+      } else {
+        console.log(`⚠ "${script}"`, '\x1b[32m', 'Not found', '\x1b[0m');
+      }
+    }
+  }
+
   try {
     writeFileSync(join(currentPath, `${distFolder}`, 'package.json'), JSON.stringify(pkg, null, 2));
     console.log(
@@ -54,5 +81,13 @@ export const cleanPackageJson = (distFolder: string, main: string): void => {
     );
   } catch (e) {
     console.error('Error modifing package.json', e);
+  }
+};
+
+export const makeArray = (input: string | string[]): string[] => {
+  if (Array.isArray(input)) {
+    return input;
+  } else {
+    return [input];
   }
 };

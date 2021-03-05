@@ -63,13 +63,14 @@ Highly recommended to use as `postbuild` hook in you `package.json`
 
 ## Options
 
-| Option        | Description                                       | default     | example                   |
-| ------------- | ------------------------------------------------- | ----------- | ------------------------- |
-| -h, --help    | Display this usage info                           | -           | -                         |
-| -v, --version | Show version                                      | -           | -                         |
-| -d, --dist    | Dist folder path                                  | `dist`      | `-d build`                |
-| -f, --files   | Array of files to copy into dist folder as well   | `README.md` | `-f README.md -f LICENSE` |
-| -m, --main    | Main folder where. Usually where is your index.js | `./`        | `-m ./src/`               |
+| Option              | Description                                       | default     | example                   |
+| ------------------- | ------------------------------------------------- | ----------- | ------------------------- |
+| -h, --help          | Display this usage info                           | -           | -                         |
+| -v, --version       | Show version                                      | -           | -                         |
+| -d, --dist          | Dist folder path                                  | `dist`      | `-d build`                |
+| -f, --files         | Array of files to copy into dist folder as well   | `README.md` | `-f README.md -f LICENSE` |
+| -m, --main          | Main folder where. Usually where is your index.js | `./`        | `-m ./src/`               |
+| -s, --remove-script | Remove script in package.json                     | -           | `-s postinstall -s test`  |
 
 ## Development
 

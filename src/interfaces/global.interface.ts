@@ -3,4 +3,5 @@ export interface Arguments {
   help?: string;
   files?: string[];
   main?: string;
+  'remove-scripts'?: string[];
 }
