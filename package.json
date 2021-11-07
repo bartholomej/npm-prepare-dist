@@ -1,6 +1,6 @@
 {
   "name": "npm-prepare-dist",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Prepare library for NPM distribution",
   "main": "./dist/index.js",
   "author": "BART! <bart@bartweb.cz>",
