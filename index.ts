@@ -9,6 +9,7 @@ let stop = false;
 
 const args = minimist(process.argv.slice(2), {
   string: ['dist', 'files', 'main', 'remove-script'],
+  boolean: ['remove-deps'],
   alias: { h: 'help', v: 'version', d: 'dist', f: 'files', m: 'main', s: 'remove-script' },
   unknown: (err: string) => {
     console.log('Those arguments are not supported:', err);
@@ -30,7 +31,8 @@ if (args.help) {
   log('  -d, --dist              Dist folder path');
   log('  -f, --files             Array of files to copy into dist folder as well');
   log('  -m, --main              Main folder where. Usually where is your index.js');
-  log('  -s, --remove-script   Remove selected script in package.json');
+  log('  -s, --remove-script     Remove selected script in package.json');
+  log('  --remove-deps           Remove all dependencies from package.json');
   log(' ');
   process.exit(args.help ? 0 : 1);
 } else if (args.version) {
@@ -42,6 +44,7 @@ if (args.help) {
   const filesToCopy = args.files ? args.files : undefined;
   const main = args.main ? args.main : undefined;
   const removeScript = args['remove-script'] ? makeArray(args['remove-script']) : [];
+  const removeDeps = args['remove-deps'] ? true : false;
 
-  prepareDist(dist, filesToCopy, main, false, removeScript);
+  prepareDist(dist, filesToCopy, main, removeDeps, removeScript);
 }

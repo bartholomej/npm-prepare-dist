@@ -71,6 +71,7 @@ Highly recommended to use as `postbuild` hook in you `package.json`
 | -f, --files         | Array of files to copy into dist folder as well   | `README.md` | `-f README.md -f LICENSE` |
 | -m, --main          | Main folder where. Usually where is your index.js | `./`        | `-m ./src/`               |
 | -s, --remove-script | Remove script in package.json                     | -           | `-s postinstall -s test`  |
+| --remove-deps       | Remove all dependencies from package.json         | -           | `--remove-deps`           |
 
 ## Development
 
