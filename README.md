@@ -47,7 +47,7 @@ import { prepareDist } from 'npm-prepare-dist';
 prepareDist('build', ['README.md', 'LICENSE', 'icon.svg'], './src/');
 ```
 
-## Exapmle
+## Example
 
 Highly recommended to use as `postbuild` hook in you `package.json`
 
